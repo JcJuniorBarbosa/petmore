@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Nomes para Pets - Petmore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1691861601995684"
+     crossorigin="anonymous"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#390291] text-white p-4">
+    
+    <nav class="fixed top-0 left-0 w-full bg-white p-4 shadow-md bg-white p-4 shadow-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+            <a href="index.html" class="text-[#390291] text-xl font-bold flex items-center">
+                🐾 Petmore
+            </a>
+            
+            <!-- Botão Hamburguer -->
+            <button id="menu-btn" class="md:hidden text-[#390291] text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Menu de Navegação -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto mt-4 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6 text-[#390291] font-medium">
+                    <li><a href="gerador-de-nomes.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">🐶 Gerador de Nomes</a></li>
+                    <li><a href="idade-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">📅 Calculadora de Idade</a></li>
+                    <li><a href="imc-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">⚖️ IMC Canino</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="bg-white p-6 rounded-2xl shadow-lg w-96 text-center text-black mt-20">
+        <h1 class="text-xl font-bold mb-4">Gerador de Nomes para Pets</h1>
+        
+        <label for="tipoPet" class="block mb-2 font-semibold">Escolha o tipo de pet:</label>
+        <select id="tipoPet" class="mb-4 p-2 border rounded w-full">
+            <option value="gato">Gato</option>
+            <option value="cachorro">Cachorro</option>
+            <option value="roedor">Roedor</option>
+            <option value="passaro">Pássaro</option>
+        </select>
+        
+        <button onclick="gerarNome()" class="bg-[#390291] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-800">Gerar Nome</button>
+        <p id="nomePet" class="text-lg font-semibold mt-4 bg-[#56E277] text-white rounded-md"></p>
+    </div>
+    
+    <script>
+
+        const nomes = {
+            gato: [
+                "Mingau", "Garfield", "Tom", "Felix", "Salem", "Oliver", "Simba", "Luna", "Mia", "Nina", "Snow", 
+                "Tigrão", "Chico", "Juju", "Amora", "Cleo", "Zeus", "Pandora", "Mimo", "Misty", "Ziggy", "Bidu", 
+                "Fluffy", "Jade", "Rajado", "Mabel", "Boris", "Xereta", "Sushi", "Marshmallow", "Preta", "Caramelo"
+            ],
+            cachorro: [
+                "Rex", "Thor", "Bob", "Lulu", "Mel", "Max", "Toby", "Pipoca", "Cacau", "Zeus", "Apolo", "Bolt", 
+                "Snoopy", "Doguinho", "Buddy", "Spike", "Brutus", "Xerife", "Tina", "Duke", "Bailey", "Maggie", 
+                "Lobo", "Fiona", "Fred", "Chocolate", "Marley", "Pingo", "Billy", "Bela", "Hulk", "Nina", "Bolota"
+            ],
+            roedor: [
+                "Bolinha", "Nibbles", "Frajola", "Pipoca", "Sonic", "Toquinho", "Tutu", "Whiskers", "Alvin", "Theodoro", 
+                "Biscoito", "Queijo", "Tico", "Teco", "Zeca", "Fofinho", "Rapadura", "Minnie", "Batatinha", "Bolacha", 
+                "Coquinho", "Chico", "Jujuba", "Dudu", "Chispas", "Mingau", "Lili", "Babalu", "Pingo", "Ratinho", "Amendoim"
+            ],
+            passaro: [
+                "Kiwi", "Paco", "Louro", "Blue", "Sky", "Sunny", "Tico", "Piu", "Frajola", "Céu", "Aurora", "Sol", 
+                "Anjo", "Arco-Íris", "Chico", "Luna", "Fred", "Curió", "Estrela", "Peninha", "Pérola", "Zazá", "Neve", 
+                "Ararinha", "Jasmin", "Branquinho", "Bidu", "Tuca", "Pipoca", "Ariel", "Bento", "Pluma", "Gaia"
+            ]
+        };
+
+
+        function gerarNome() {
+            let tipoPet = document.getElementById("tipoPet").value;
+            let nomeAleatorio = "Nome: "+nomes[tipoPet][Math.floor(Math.random() * nomes[tipoPet].length)];
+            
+            let nomePetElemento = document.getElementById("nomePet");
+            nomePetElemento.textContent = nomeAleatorio;
+            nomePetElemento.classList.add("p-2"); // Adiciona o padding apenas quando há um nome gerado
+        }
+
+    </script>
+
+    <footer class="mt-20 text-sm text-white text-center">
+        Criado por <strong>Junior Barbosa</strong> — Contato: 
+        <a href="mailto:jcloves.junior@gmail.com" class="underline hover:text-gray-300">jcloves.junior@gmail.com</a>
+        <br/>
+        <span class="block mt-2">Petmore é uma ferramenta gratuita e independente para ajudar tutores de pets.<br/>
+        Não possui vínculo com marcas registradas.</span>
+    </footer>
+
+    <script>
+        // Script para alternar o menu no mobile
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC para Pets - Petmore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1691861601995684"
+     crossorigin="anonymous"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#390291] text-white p-4">
+
+    
+    <nav class="fixed top-0 left-0 w-full bg-white p-4 shadow-md bg-white p-4 shadow-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+            <a href="index.html" class="text-[#390291] text-xl font-bold flex items-center">
+                🐾 Petmore
+            </a>
+            
+            <!-- Botão Hamburguer -->
+            <button id="menu-btn" class="md:hidden text-[#390291] text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Menu de Navegação -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto mt-4 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6 text-[#390291] font-medium">
+                    <li><a href="gerador-de-nomes.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">🐶 Gerador de Nomes</a></li>
+                    <li><a href="idade-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">📅 Calculadora de Idade</a></li>
+                    <li><a href="imc-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">⚖️ IMC Canino</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="bg-white p-6 rounded-2xl shadow-lg w-96 text-center text-black mt-20">
+        <h1 class="text-xl font-bold mb-4">Calculadora de IMC para Pets</h1>
+        
+        <label for="peso" class="block mb-2 font-semibold">Peso (kg):</label>
+        <input type="number" id="peso" class="mb-4 p-2 border rounded w-full" placeholder="Ex: 4.5">
+        
+        <label for="altura" class="block mb-2 font-semibold">Altura (cm):</label>
+        <input type="number" id="altura" class="mb-4 p-2 border rounded w-full" placeholder="Ex: 30">
+        
+        <button onclick="calcularIMC()" class="bg-[#390291] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-800">Calcular</button>
+        <p id="resultado" class="text-lg font-semibold mt-4"></p>
+    </div>
+    
+    <script>
+        function calcularIMC() {
+            let peso = parseFloat(document.getElementById("peso").value);
+            let altura = parseFloat(document.getElementById("altura").value) / 100; // Converter para metros
+            
+            if (!peso || !altura) {
+                document.getElementById("resultado").textContent = "Por favor, insira valores válidos.";
+                return;
+            }
+            
+            let imc = peso / (altura * altura);
+            let classificacao = "";
+
+            if (imc < 15) classificacao = "Abaixo do peso";
+            else if (imc >= 15 && imc < 25) classificacao = "Peso ideal";
+            else classificacao = "Acima do peso";
+
+            document.getElementById("resultado").textContent = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
+        }
+    </script>
+
+    <footer class="mt-20 text-sm text-white text-center">
+        Criado por <strong>Junior Barbosa</strong> — Contato: 
+        <a href="mailto:jcloves.junior@gmail.com" class="underline hover:text-gray-300">jcloves.junior@gmail.com</a>
+        <br/>
+        <span class="block mt-2">Petmore é uma ferramenta gratuita e independente para ajudar tutores de pets.<br/>
+        Não possui vínculo com marcas registradas.</span>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade para Pets - Petmore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1691861601995684"
+     crossorigin="anonymous"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#390291] text-white p-4">
+    
+    <nav class="fixed top-0 left-0 w-full bg-white p-4 shadow-md bg-white p-4 shadow-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+            <a href="index.html" class="text-[#390291] text-xl font-bold flex items-center">
+                🐾 Petmore
+            </a>
+            
+            <!-- Botão Hamburguer -->
+            <button id="menu-btn" class="md:hidden text-[#390291] text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Menu de Navegação -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto mt-4 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6 text-[#390291] font-medium">
+                    <li><a href="gerador-de-nomes.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">🐶 Gerador de Nomes</a></li>
+                    <li><a href="idade-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">📅 Calculadora de Idade</a></li>
+                    <li><a href="imc-pet.html" class="block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent">⚖️ IMC Canino</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-white p-6 rounded-2xl shadow-lg w-96 text-center text-black mt-20">
+        <h1 class="text-xl font-bold mb-4">Calculadora de Idade para Pets</h1>
+        
+        <label for="tipoPet" class="block mb-2 font-semibold">Escolha o tipo de pet:</label>
+        <select id="tipoPet" class="mb-4 p-2 border rounded w-full">
+            <option value="gato">Gato</option>
+            <option value="cachorro">Cachorro</option>
+        </select>
+
+        <label for="idade" class="block mb-2 font-semibold">Idade do pet (anos):</label>
+        <input type="number" id="idade" class="mb-4 p-2 border rounded w-full" placeholder="Ex: 3">
+        
+        <button onclick="calcularIdade()" class="bg-[#390291] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-800">Calcular</button>
+        <p id="resultado" class="text-lg font-semibold mt-4"></p>
+    </div>
+    
+    <script>
+        function calcularIdade() {
+            let tipoPet = document.getElementById("tipoPet").value;
+            let idade = parseInt(document.getElementById("idade").value);
+            
+            if (!idade || idade < 0) {
+                document.getElementById("resultado").textContent = "Por favor, insira uma idade válida.";
+                return;
+            }
+            
+            let idadeHumana = 0;
+
+            if (tipoPet === "gato") {
+                idadeHumana = idade === 1 ? 15 : idade === 2 ? 24 : 24 + (idade - 2) * 4;
+            } else if (tipoPet === "cachorro") {
+                idadeHumana = idade === 1 ? 15 : idade === 2 ? 24 : 24 + (idade - 2) * 5;
+            }
+
+            document.getElementById("resultado").textContent = `Idade equivalente em anos humanos: ${idadeHumana}`;
+        }
+    </script>
+
+    <footer class="mt-20 text-sm text-white text-center">
+        Criado por <strong>Junior Barbosa</strong> — Contato: 
+        <a href="mailto:jcloves.junior@gmail.com" class="underline hover:text-gray-300">jcloves.junior@gmail.com</a>
+        <br/>
+        <span class="block mt-2">Petmore é uma ferramenta gratuita e independente para ajudar tutores de pets. <br/>
+        Não possui vínculo com marcas registradas.</span>
+    </footer>
+
+</body>
+</html>
